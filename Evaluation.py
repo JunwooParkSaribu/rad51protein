@@ -12,7 +12,7 @@ if __name__ == '__main__':
         cur_path = '.'
 
     data_path = f'{cur_path}/data/selected_samples'
-    model_path = f'{cur_path}/model/model1'
+    model_path = f'{cur_path}/model/model3'
     batch_size = 8
 
     print(f'\nLoading the data...')
