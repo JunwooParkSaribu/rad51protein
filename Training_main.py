@@ -13,12 +13,13 @@ if __name__ == '__main__':
     else:
         cur_path = '.'
 
-    data_path = './data/augmented_samples'
+    data_path = '/shared/projects/histoneclf/rad51data/augmented_data'
     model_path = f'{cur_path}/model'
     epochs = 500
     batch_size = 8
 
     gpus = ConvModel.tf.config.list_physical_devices('GPU')
+    print('GPUS LIST : ',gpus)
     if gpus:
         try:
             # Currently, memory growth needs to be the same across GPUs

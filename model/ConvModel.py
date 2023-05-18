@@ -213,13 +213,13 @@ class Rad51(keras.Model):
             # Callback
             if trace == 'training_loss':
                 best_weight = callbacks[0].on_epoch_end(
-                    epoch=epoch, weights=self.weights, loss=self.train_loss.result())
+                    epoch=epoch, weights=self.get_weights(), loss=self.train_loss.result())
             elif trace == 'training_test_loss':
                 best_weight = callbacks[0].on_epoch_end(
-                    epoch=epoch, weights=self.weights, loss=self.train_loss.result() + self.test_loss.result())
+                    epoch=epoch, weights=self.get_weights(), loss=self.train_loss.result() + self.test_loss.result())
             else:
                 best_weight = callbacks[0].on_epoch_end(
-                    epoch=epoch, weights=self.weights, loss=self.test_loss.result())
+                    epoch=epoch, weights=self.get_weights(), loss=self.test_loss.result())
             if best_weight is not None:
                 self.set_weights(best_weight)
                 break

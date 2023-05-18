@@ -13,8 +13,8 @@ if __name__ == '__main__':
     else:
         cur_path = '.'
 
-    data_path = './data/Rad51_2023_04_06'
-    model_path = f'{cur_path}/model/model4'
+    data_path = '/shared/projects/histoneclf/rad51data/selected_samples'
+    model_path = f'{cur_path}/model/model1'
     batch_size = 8
 
     print(f'\nLoading the data...')

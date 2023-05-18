@@ -438,6 +438,6 @@ plt.show()"""
 #b = imgs_to_ndarray([data_id])
 #rotation_shift(b[0], [data_id], shift_nb=2, rotation_nb=4)
 
-#data_list = data_recur_search(['./data/selected_samples/1_Stiff Rods'])
-#images, labels = imgs_to_ndarray(data_list)
-#rotation_shift(images, data_list, shift_nb=20, rotation_nb=24, savepath='./')
+data_list = data_recur_search(['/shared/projects/histoneclf/rad51data/selected_samples/3_Circles_lasso'])
+images, labels = imgs_to_ndarray(data_list)
+rotation_shift(images, data_list, shift_nb=20, rotation_nb=24, savepath='/shared/projects/histoneclf/rad51data/augmented_data/3_circles_lasso')

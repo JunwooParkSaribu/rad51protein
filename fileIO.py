@@ -5,7 +5,7 @@ import os
 
 
 def read_image(img):
-    return iio.imread(img)
+    return iio.imread(img, extension='.tif')
 
 
 def imgs_to_ndarray(data: list) -> tuple:
@@ -22,7 +22,7 @@ def imgs_to_ndarray(data: list) -> tuple:
     return np.array(img_list), np.array(label_list)
 
 
-def data_recur_search(path: str | list, cls=None):
+def data_recur_search(path, cls=None):
     if cls is None:
         cls = [0, 1, 2, 3, 4]
     data_list = []
