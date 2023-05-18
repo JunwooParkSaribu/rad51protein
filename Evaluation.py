@@ -1,8 +1,6 @@
 import os
 import sys
-import time
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # Suppress TensorFlow logging (1)
-import matplotlib.pyplot as plt
 import numpy as np
 from keras.models import load_model
 from fileIO import imgs_to_ndarray, data_recur_search
@@ -13,7 +11,7 @@ if __name__ == '__main__':
     else:
         cur_path = '.'
 
-    data_path = '/shared/projects/histoneclf/rad51data/selected_samples'
+    data_path = f'{cur_path}/data/selected_samples'
     model_path = f'{cur_path}/model/model1'
     batch_size = 8
 
