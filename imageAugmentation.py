@@ -449,7 +449,7 @@ plt.show()"""
 #rotation_shift(b[0], [data_id], shift_nb=2, rotation_nb=4)
 
 data_list = data_recur_search(['./data/selected_samples/1_Stiff Rods'])
-images, labels = imgs_to_ndarray(data_list)
+images, labels, _ = imgs_to_ndarray(data_list)
 rotation_shift(images, data_list, shift_nb=30, rotation_nb=12, savepath='./data/augmented_data/1_stiff_rods')
 
 # 1_stiff_rods : 30, 12
