@@ -16,8 +16,8 @@ if __name__ == '__main__':
     batch_size = 8
 
     print(f'\nLoading the data...')
-    data_list = data_recur_search(data_path, cls=[0, 1, 2])
-    images, labels = imgs_to_ndarray(data_list)
+    data_list = data_recur_search(data_path, cls=[1])
+    images, labels, names = imgs_to_ndarray(data_list)
     print(images.shape, labels.shape)
 
     Rad51_model = load_model(model_path, compile=True)

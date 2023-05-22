@@ -138,17 +138,27 @@ def rotation_shift(images, data_list, shift_nb=10, rotation_nb=24, savepath='.')
             pass_count = 0
 
             while repeat_num < shift_nb:
-                if 50-min_x > 100 - max_x or 50-min_y > 100 - max_y:
-                    print(min_x, min_y, max_x, max_y)
-                    plt.figure()
-                    plt.imshow(boundary)
-                    plt.figure()
-                    plt.imshow(rot_bd*255)
-                    plt.figure()
-                    plt.imshow(rot_img)
-                    plt.show()
-                x_shift = np.random.randint(50-min_x, 100 - max_x)
-                y_shift = np.random.randint(50-min_y, 100 - max_y)
+                if 50-min_x >= 100 - max_x:
+                    print('type1 err', min_x, max_x, min_y, max_y)
+                    min_x = 50
+                    max_x = 99
+                if 50-min_y >= 100 - max_y:
+                    print('type2 err', min_x, max_x, min_y, max_y)
+                    min_y = 50
+                    max_y = 99
+                    #plt.figure()
+                    #plt.imshow(boundary)
+                    #plt.figure()
+                    #plt.imshow(rot_bd*255)
+                    #plt.figure()
+                    #plt.imshow(rot_img)
+                    #plt.show()
+                try:
+                    x_shift = np.random.randint(50 - min_x, 100 - max_x)
+                    y_shift = np.random.randint(50 - min_y, 100 - max_y)
+                except:
+                    print('catch ', min_x, max_x, min_y, max_y)
+                    exit(1)
                 if (x_shift, y_shift) in shift_mem:
                     pass_count += 1
                     if pass_count > shift_nb + 100:
@@ -438,6 +448,6 @@ plt.show()"""
 #b = imgs_to_ndarray([data_id])
 #rotation_shift(b[0], [data_id], shift_nb=2, rotation_nb=4)
 
-data_list = data_recur_search(['/shared/projects/histoneclf/rad51data/selected_samples/3_Circles_lasso'])
+data_list = data_recur_search(['./data/selected_samples/5_others'])
 images, labels = imgs_to_ndarray(data_list)
-rotation_shift(images, data_list, shift_nb=20, rotation_nb=24, savepath='/shared/projects/histoneclf/rad51data/augmented_data/3_circles_lasso')
+rotation_shift(images, data_list, shift_nb=20, rotation_nb=12, savepath='./data/augmented_data/5_others')

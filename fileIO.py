@@ -11,15 +11,18 @@ def read_image(img):
 def imgs_to_ndarray(data: list) -> tuple:
     img_list = []
     label_list = []
+    file_name_list = []
     try:
         for img_name in data:
+            print(img_name)
             img_arr = read_image(img_name)
             img_list.append(img_arr)
             label_list.append(label.labeling(img_name))
+            file_name_list.append(img_name.split('/')[-1])
     except RuntimeError as e:
         print('Err while reading the images')
         print(e)
-    return np.array(img_list), np.array(label_list)
+    return np.array(img_list), np.array(label_list), file_name_list
 
 
 def data_recur_search(path, cls=None):
