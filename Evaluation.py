@@ -2,6 +2,7 @@ import os
 import sys
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # Suppress TensorFlow logging (1)
 import numpy as np
+import matplotlib.pyplot as plt
 from keras.models import load_model
 from fileIO import imgs_to_ndarray, data_recur_search
 
@@ -27,9 +28,14 @@ if __name__ == '__main__':
     mismatchs = []
     for i in range(len(labels)):
         if labels[i] != y_pred[i]:
-            mismatchs.append((labels[i], y_pred[i], names[i]))
+            mismatchs.append((images[i], labels[i], y_pred[i], names[i]))
     acc = [1 if x == 0 else 0 for x in (labels - y_pred)]
     acc = np.sum(acc)/len(acc)
     print(acc)
 
-    print(mismatchs)
+    for mismatch in mismatchs:
+        print(mismatch[1:3])
+        print(mismatch[3])
+        plt.figure()
+        plt.imshow(mismatch[0])
+        plt.show()
