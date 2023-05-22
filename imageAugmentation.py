@@ -448,9 +448,9 @@ plt.show()"""
 #b = imgs_to_ndarray([data_id])
 #rotation_shift(b[0], [data_id], shift_nb=2, rotation_nb=4)
 
-data_list = data_recur_search(['./data/selected_samples/1_Stiff Rods'])
+data_list = data_recur_search(['./data/selected_samples/4_1knot'])
 images, labels, _ = imgs_to_ndarray(data_list)
-rotation_shift(images, data_list, shift_nb=30, rotation_nb=12, savepath='./data/augmented_data/1_stiff_rods')
+rotation_shift(images, data_list, shift_nb=37, rotation_nb=24, savepath='./data/augmented_data/4_1knot')
 
 # 1_stiff_rods : 30, 12
 # 3_circles_lasso : 31, 24
