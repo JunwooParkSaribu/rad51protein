@@ -14,7 +14,6 @@ def imgs_to_ndarray(data: list) -> tuple:
     file_name_list = []
     try:
         for img_name in data:
-            print(img_name)
             img_arr = read_image(img_name)
             img_list.append(img_arr)
             label_list.append(label.labeling(img_name))

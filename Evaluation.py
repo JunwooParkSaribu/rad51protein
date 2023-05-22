@@ -23,6 +23,13 @@ if __name__ == '__main__':
     Rad51_model = load_model(model_path, compile=True)
     Rad51_model.summary()
     y_pred = np.argmax((Rad51_model.predict(images / 255.)), axis=1)
+
+    mismatchs = []
+    for i in range(len(labels)):
+        if labels[i] != y_pred[i]:
+            mismatchs.append((labels[i], y_pred[i], names[i]))
     acc = [1 if x == 0 else 0 for x in (labels - y_pred)]
     acc = np.sum(acc)/len(acc)
     print(acc)
+
+    print(mismatchs)
