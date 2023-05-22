@@ -59,7 +59,7 @@ if __name__ == '__main__':
                                                        ).batch(batch_size, drop_remainder=False)
 
     print(f'Training the data...')
-    training_model = ConvModel.Rad51(end_neurons=3)
+    training_model = ConvModel.Rad51(end_neurons=5)
     training_model.build(input_shape=(None, gen.get_shape()[0], gen.get_shape()[1], gen.get_shape()[2]))
     training_model.summary()
     training_model.compile(optimizer=ConvModel.tf.keras.optimizers.Adam(learning_rate=1e-5))
