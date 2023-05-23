@@ -448,9 +448,9 @@ plt.show()"""
 #b = imgs_to_ndarray([data_id])
 #rotation_shift(b[0], [data_id], shift_nb=2, rotation_nb=4)
 
-data_list = data_recur_search(['/shared/home/jpark/jwoo/rad51protein/data/selected_samples/1_Stiff Rods']) # 2_Bent rods, 3_Circles_lasso, 4_1knot, 5_others
+data_list = data_recur_search(['/shared/home/jpark/jwoo/rad51protein/data/selected_samples/2_Bent rods']) # 2_Bent rods, 3_Circles_lasso, 4_1knot, 5_others
 images, labels, _ = imgs_to_ndarray(data_list)
-rotation_shift(images, data_list, shift_nb=28, rotation_nb=24, savepath='/shared/projects/histoneclf/rad51data/augmented_data/1_stiff_rods')
+rotation_shift(images, data_list, shift_nb=13, rotation_nb=24, savepath='/shared/projects/histoneclf/rad51data/augmented_data/2_bent_rods')
 
 # 1_stiff_rods : 30, 12
 # 3_circles_lasso : 31, 24

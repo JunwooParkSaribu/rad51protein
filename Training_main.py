@@ -34,7 +34,7 @@ if __name__ == '__main__':
     print(f'\nLoading the data...')
     data_list = data_recur_search(data_path)
     images, labels, names = imgs_to_ndarray(data_list)
-    images, labels = subsampling(images, labels, size=50000)
+    images, labels = subsampling(images, labels, size=100000)
 
     print(images.shape, labels.shape)
     print(f'Generator building...')

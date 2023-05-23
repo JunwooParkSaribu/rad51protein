@@ -1,11 +1,11 @@
 #!/bin/bash
 
 #SBATCH --job-name=rad51protein
-#SBATCH --mem-per-cpu=8GB
+#SBATCH --mem 8GB
 #SBATCH --account=histoneclf
-#SBATCH --partition=fast
-#SBATCH --cpus-per-task=16
+#SBATCH --partition=long
+#SBATCH --cpus-per-task=8
 
-python3 time.py
+python3 imageAugmentation.py
 
 echo "Job submit done"
