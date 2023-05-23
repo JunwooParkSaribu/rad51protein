@@ -13,7 +13,7 @@ if __name__ == '__main__':
         cur_path = '.'
 
     data_path = f'{cur_path}/data/selected_samples'
-    model_path = f'{cur_path}/model/model3'
+    model_path = f'{cur_path}/model/model5'
     batch_size = 8
 
     print(f'\nLoading the data...')
@@ -32,10 +32,11 @@ if __name__ == '__main__':
     acc = [1 if x == 0 else 0 for x in (labels - y_pred)]
     acc = np.sum(acc)/len(acc)
     print(acc)
-
+    """
     for mismatch in mismatchs:
         print(mismatch[1:3])
         print(mismatch[3])
         plt.figure()
         plt.imshow(mismatch[0])
         plt.show()
+    """
