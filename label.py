@@ -7,11 +7,12 @@ def labeling(file):
             return 1
         elif '3_circles' in hint:
             return 2
-        elif '4_1knot' in hint:
+        elif '4_1knot' in hint or '4_1not' in hint:
             return 3
         elif '5_others' in hint:
             return 4
         else:
+            print(hint)
             raise Exception
     except:
         print('Err while labeling')

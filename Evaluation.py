@@ -13,11 +13,11 @@ if __name__ == '__main__':
         cur_path = '.'
 
     data_path = f'{cur_path}/data/selected_samples'
-    model_path = f'{cur_path}/model/model5'
+    model_path = f'{cur_path}/model/model6'
     batch_size = 8
 
     print(f'\nLoading the data...')
-    data_list = data_recur_search(data_path, cls=[1])
+    data_list = data_recur_search(data_path, cls=[4])
     images, labels, names = imgs_to_ndarray(data_list)
     print(images.shape, labels.shape)
 

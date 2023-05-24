@@ -8,6 +8,21 @@ def read_image(img):
     return iio.imread(img, extension='.tif')
 
 
+def check_labeled_folder(folder):
+    if '1_stiff' in folder.lower():
+        return True
+    elif '2_bent' in folder.lower():
+        return True
+    elif '3_circles' in folder.lower():
+        return True
+    elif '4_1knot' in folder.lower() or '4_1not' in folder.lower():
+        return True
+    elif '5_others' in folder.lower():
+        return True
+    else:
+        return False
+
+
 def imgs_to_ndarray(data: list) -> tuple:
     img_list = []
     label_list = []
@@ -31,20 +46,22 @@ def data_recur_search(path, cls=None):
 
     if type(path) == str:
         for root, dirs, files in os.walk(path, topdown=False):
-            label_num = root.split('/')[-1][0]
-            if label_num.isnumeric() and (int(label_num)-1) in cls:
-                for file in files:
-                    if '.tif' in file:
-                        data_list.append(f'{root}/{file}')
-        return data_list
-    else:
-        for p in path:
-            for root, dirs, files in os.walk(p, topdown=False):
+            if check_labeled_folder(root):
                 label_num = root.split('/')[-1][0]
                 if label_num.isnumeric() and (int(label_num)-1) in cls:
                     for file in files:
                         if '.tif' in file:
                             data_list.append(f'{root}/{file}')
+        return data_list
+    else:
+        for p in path:
+            for root, dirs, files in os.walk(p, topdown=False):
+                if check_labeled_folder(root):
+                    label_num = root.split('/')[-1][0]
+                    if label_num.isnumeric() and (int(label_num)-1) in cls:
+                        for file in files:
+                            if '.tif' in file:
+                                data_list.append(f'{root}/{file}')
         return data_list
 
 
