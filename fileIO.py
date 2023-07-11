@@ -48,7 +48,7 @@ def load_imgs_for_prediction(path, extensions=['.tif']):
             for ext in extensions:
                 if ext in file:
                     file_path_list.append(f'{root}/{file}')
-                    img_list.append(read_image(file))
+                    img_list.append(read_image(f'{root}/{file}'))
                     break
     return np.array(img_list), np.array(file_path_list)
 
