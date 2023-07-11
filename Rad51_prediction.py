@@ -7,7 +7,7 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         job_id = sys.argv[1]
     else:
-        exit(1)
+        sys.exit(1)
 
     data_path = f'./data/{job_id}'
     model_path = f'./model/model7'
