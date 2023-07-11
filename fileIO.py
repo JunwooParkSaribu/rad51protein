@@ -2,6 +2,7 @@ import imageio.v3 as iio
 import numpy as np
 import label
 import os
+import csv
 
 
 def read_image(img):
@@ -37,6 +38,19 @@ def imgs_to_ndarray(data: list) -> tuple:
         print('Err while reading the images')
         print(e)
     return np.array(img_list), np.array(label_list), file_name_list
+
+
+def load_imgs_for_prediction(path, extensions=['.tif']):
+    img_list = []
+    file_path_list = []
+    for root, dirs, files in os.walk(path, topdown=False):
+        for file in files:
+            for ext in extensions:
+                if ext in file:
+                    file_path_list.append(f'{root}/{file}')
+                    img_list.append(read_image(file))
+                    break
+    return np.array(img_list), np.array(file_path_list)
 
 
 def data_recur_search(path, cls=None):
@@ -79,3 +93,18 @@ def subsampling(images, labels, size: int):
     selec_images = np.array(selec_images)
     selec_labels = np.array(selec_labels)
     return selec_images, selec_labels
+
+
+def save_report(prediction: np.ndarray, file_paths:list, savepath='.') -> str:
+    report_name = 'report.csv'
+    write_file_name = f'{savepath}/{report_name}'
+    prediction_dict = {0:'stiff rods', 1:'bent rods', 2:'circles lasso', 3:'1knot', 4:'others'}
+    with open(write_file_name, 'w', newline='') as f:
+        fieldnames = ['filename', 'prediction']
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        for pred, path in zip(prediction, file_paths):
+            split = path.strip().split('.')
+            filename = f'{split[-2]}.{split[-1]}'
+            writer.writerow({'filename':filename, 'prediction':prediction_dict[pred]})
+    return report_name

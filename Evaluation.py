@@ -12,12 +12,12 @@ if __name__ == '__main__':
     else:
         cur_path = '.'
 
-    data_path = f'{cur_path}/data/selected_samples'
-    model_path = f'{cur_path}/model/model6'
+    data_path = f'{cur_path}/data/Rad51_2023_04_06'
+    model_path = f'{cur_path}/model/model7'
     batch_size = 8
 
     print(f'\nLoading the data...')
-    data_list = data_recur_search(data_path, cls=[4])
+    data_list = data_recur_search(data_path, cls=[0, 1, 2, 3, 4])
     images, labels, names = imgs_to_ndarray(data_list)
     print(images.shape, labels.shape)
 
@@ -32,11 +32,11 @@ if __name__ == '__main__':
     acc = [1 if x == 0 else 0 for x in (labels - y_pred)]
     acc = np.sum(acc)/len(acc)
     print(acc)
-    """
+
     for mismatch in mismatchs:
         print(mismatch[1:3])
         print(mismatch[3])
         plt.figure()
+        plt.title(mismatch[3])
         plt.imshow(mismatch[0])
         plt.show()
-    """
